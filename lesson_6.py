@@ -62,4 +62,15 @@ async def image(ctx):
     for i in images:
         await ctx.send(i) 
 
+@bot.command()
+async def animals(ctx):
+    img_name = random.choice(os.listdir("animal_mem"))
+
+
+    with open(f'animal_mem/{img_name}', 'rb') as f:
+        # В переменную кладем файл, который преобразуется в файл библиотеки Discord!
+        picture = discord.File(f)
+   # Можем передавать файл как параметр!
+    await ctx.send(file=picture)
+
 bot.run(token())
